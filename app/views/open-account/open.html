@@ -1,0 +1,190 @@
+<div class="open-account">
+    <div class="content">
+        <div class="top-title">
+            <p>国京开户</p><p>|</p><p>开户</p>
+        </div>
+
+        <div class="progress-tip">
+            <p>完成</p>
+            <p class="num">60%</p>
+        </div>
+        <div class="progress-toolbar">
+            <div class="item">
+                1、填写申请表
+                <span class="angle-default">
+                    <span class="child"></span>
+                </span>
+            </div>
+            <div class="item current">
+                2、开户见证
+                <span class="angle-current"></span>
+            </div>
+            <div class="item">
+                3、申请成功
+            </div>
+        </div>
+
+        <!-- success -->
+        <div class="success">
+            <div class="title">
+                <p>您的交易账户已开通！请记录交易账号：</p>
+                <p class="tip">888888</p>
+            </div>
+            <div class="ad">
+                <div class="block">
+                    <i class="icon-download"></i>
+                    <p class="title">下载交易软件</p>
+                    <p class="des">移动端交易软件</p>
+                </div>
+                <div class="block">
+                    <i class="icon-rule"></i>
+                    <p class="title">了解规则</p>
+                    <p class="des">查看交易规则及交易费用说明</p>
+                </div>
+                <div class="block">
+                    <i class="icon-recharge"></i>
+                    <p class="title">入金开始交易</p>
+                    <p class="des">银联直接入金，即时到帐</p>
+                </div>
+            </div>
+        </div>
+        <!-- success end -->
+
+        <!-- witness -->
+        <div class="witness-form" style="display:none;">
+            <p>恭喜您的《开户申请》提交成功，我们的客户经理会主动与您取得联系！</p>
+            <br>
+            <p>或者选择立即联系 QQ 客服：</p>
+            <div class="photo">
+                <i class="icon-witness-photo"></i>
+                <br>
+                <p class="name">王潇</p>
+            </div>
+            <div class="btn">QQ 立即联系</div>
+        </div>
+        <!-- witness end -->
+
+        <!-- application-form -->
+        <div class="application-form" style="display:none;">
+            <div class="title">身份信息</div>
+            <ul class="form">
+                <li class="item">
+                    <p class="item-title">国家/地区</p>
+                    <select class="form-control">
+                        <option>中国</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </li>
+                <li class="item">
+                    <p class="item-title">证件类型</p>
+                    <select class="form-control">
+                        <option>身份证</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </li>
+                <li class="item">
+                    <p class="item-title">证件类型</p>
+                    <input type="text" class="form-control item-input">
+                </li>
+                <li class="item">
+                    <p class="item-title">
+                        签发机构
+                        <i class="icon-info tip" wd-tooltip
+                        data-placement="bottom"
+                        title="证件照背面，例：XXX 公安局"></i>
+                    </p>
+                    <input type="text" class="form-control item-input">
+                </li>
+                <li class="item">
+                    <p class="item-title">性别</p>
+                    <div class="sex-chose btn-group">
+                        <span class="btn">男</span>
+                        <span class="btn no-check">女</span>
+                        <span class="btn no-check">其他</span>
+                    </div>
+                </li>
+                <li class="item">
+                    <p class="item-title">出生日期</p>
+                    <input type="text" class="form-control item-input"
+                    placeholder="1984-01-01">
+                </li>
+            </ul>
+            <div class="title">附加信息</div>
+            <ul class="form">
+                <li class="item">
+                    <p class="item-title">就业状况</p>
+                    <select class="form-control">
+                        <option>就业</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </li>
+                <li class="item">
+                    <p class="item-title">常住地址</p>
+                    <input type="text" class="form-control item-input address">
+                </li>
+                <li class="item">
+                    <p class="item-title">通讯地址</p>
+                    <input type="text" class="form-control item-input address"
+                    placeholder="如：xx 省 xx 市 xx 区 xx 街道 xx 号 xx 楼层 xx 室">
+                </li>
+            </ul>
+            <div class="protocol">
+                <p>本人已经阅读且理解认同账户的<a href="">《风险披露声明》以及《客户协议书》</a></p>
+            </div>
+            <div class="submit-btn btn">确认，进入下一步</div>
+        </div>
+        <!-- application-form end -->
+
+        <!-- base-form -->
+        <div class="base-form" ng-class="{'hide-slow': change}" style="display:none;">
+            <ul>
+                <li class="item">
+                    <p class="item-title">开户类型</p>
+                    <p>环球证券账户</p>
+                    <i class="icon-info tip" wd-tooltip
+                    data-placement="right" 
+                    title="环球证券保证金账户可投资港股、美股等股票。"></i>
+                    <p>环球期货账户</p>
+                    <i class="icon-info tip" wd-tooltip
+                    data-placement="right"
+                    title="环球期货账户可投资外盘贵金属、能源、农产品、指数、外汇等全球期货市场"></i>
+                </li>
+                <!--
+                <li class="item has-error">
+                    <p class="item-title">中文姓名</p>
+                    <input type="text" class="error form-control item-input">
+                </li>
+                -->
+                <li class="item">
+                    <p class="item-title">中文姓名</p>
+                    <input type="text" class="form-control item-input">
+                </li>
+                <li class="item">
+                    <p class="item-title">拼音姓名</p>
+                    <input type="text" class="form-control item-input">
+                </li>
+                <li class="item">
+                    <p class="item-title">手机号码</p>
+                    <input type="text" class="form-control item-input">
+                </li>
+                <li class="item">
+                    <p class="item-title">电子邮件</p>
+                    <input type="text" class="form-control item-input">
+                </li>
+            </ul>
+            <div class="submit-btn btn" ng-click="test();">提交</div>
+        </div>
+        <!-- base-form end -->
+
+
+    </div>
+</div>

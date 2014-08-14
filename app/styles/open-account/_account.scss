@@ -1,0 +1,214 @@
+.open-account {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: auto;
+    min-height: 100%;
+    background-color: $standard-gray;
+    .btn {
+        color: #fff;
+        background-color: $standard-green;
+    }
+    .top-title {
+        font-size: 20px;
+        p {
+            margin-right: 20px;
+        }
+    }
+    .content {
+        padding: 30px 50px 30px 50px;
+        width: 960px;
+        background-color: #fff;
+        margin: 0px auto;
+        height: 100%;
+        min-height: 950px;
+        position: relative;
+    }
+    .progress-tip {
+        position: absolute;
+        right: 50px;
+        top: 30px;
+        font-size: 14px;
+        .num {
+            margin-left: 5px;
+            font-size: 23px;
+            color: $standard-red;
+        }
+    }
+    .progress-toolbar {
+        background-color: $standard-gray;
+        width: 100%;
+        height: 50px;
+        margin-top: 10px;
+        margin-bottom: 35px;
+        .item {
+            position: relative;
+            text-align: center;
+            width: 33%;
+            float: left;
+            height: 100%;
+            line-height: 50px;
+            border-right: 1px solid #fff;
+            &:last-child {
+                border-right: none;
+            }
+            &.current {
+                background-color: $standard-green;
+                color: #fff;
+            }
+        }
+        .angle-current {
+            display: inline-block;
+            position: absolute;
+            width:0; 
+            height:0;
+            border: 25px solid; 
+            right: -50px;
+            border-color: transparent transparent transparent $standard-green;
+        }
+        .angle-default {
+            display: inline-block;
+            position: absolute;
+            width:0; 
+            height:0;
+            border: 25px solid; 
+            right: -50px;
+            border-color: transparent transparent transparent #fff;
+            z-index: 200;
+            .child {
+                position: absolute;
+                display: inline-block;
+                width:0; 
+                height:0;
+                right: -23px;
+                top: -25px;
+                border: 25px solid; 
+                border-color: transparent transparent transparent $standard-gray;
+            }
+        }
+    }
+    .base-form {
+        @include transition(all, 1s);
+        &.hide-slow {
+            @include opacity(0);
+            @include translate3d(-200px, 0, 0);
+        }
+        margin: 50px 0px 0px 170px;
+        .tip {
+            margin-right: 20px;
+        }
+        .item {
+            margin-bottom: 20px;
+        }
+        .item-title {
+            margin-right: 35px;
+        }
+        .item-input {
+            width: 230px;
+        }
+        .submit-btn {
+            width: 200px;
+            margin-left: 132px;
+        }
+    }
+    .application-form {
+        margin-left: 120px;
+        .title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        select, input[type=text] {
+            width: 200px;
+        }
+        .submit-btn {
+            width: 200px;
+            margin-top: 30px;
+            margin-left: 162px;
+        }
+        .form {
+            margin-left: 70px;
+            margin-bottom: 40px;
+            .item {
+                margin-bottom: 10px;
+                .item-title {
+                    width: 85px;
+                }
+            }
+            .address {
+                width: 320px;
+            }
+            .sex-chose {
+                .btn {
+                    background-color: $standard-blue;
+                    border: 1px solid #cccccc;
+                    width: 67px;
+                }
+                .no-check {
+                    color: $standard-black;
+                    background-color: #fff;
+                }
+            }
+        }
+        .protocol {
+            margin-left: 80px;
+        }
+    }
+    .witness-form {
+        text-align: center;
+        p {
+            font-size: 15px;
+        }
+        .photo {
+            width: 200px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            padding-top: 30px;
+            border-radius: 3px;
+            background-color: $standard-gray;
+            .name {
+                margin-top: 10px;
+            }
+        }
+        .btn {
+            width: 200px;
+        }
+    }
+    .success {
+        margin-left: 100px;
+        margin-top: 100px;
+        .title {
+            font-size: 15px;
+            font-weight: bold;
+            .tip {
+                font-size: 20px;
+                font-weight: normal;
+                color: $standard-green;
+            }
+        }
+        .block {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #e1e1e1;
+            float: left;
+            margin-right: 50px;
+            padding-top: 30px;
+            margin-top: 50px;
+            text-align: center;
+            i {
+                display: block;
+                margin: 0 auto;
+            }
+            .title {
+                font-weight: normal;
+                color: $standard-blue;
+                width: 100%;
+                margin-top: 10px;
+            }
+            .des {
+                color: #888;
+            }
+        }
+    }
+}

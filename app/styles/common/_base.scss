@@ -1,0 +1,64 @@
+/* 各种标准色 */
+$standard-green: #69ba71;
+$standard-red: #ff4848;
+$standard-black: #333333;
+$standard-blue: #00a0ff;
+$standard-gray: #e1e1e1;
+
+/* 其他公用颜色 */
+/* 去掉 Mac 下浏览器惯性滚动 */
+html {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: auto;
+    font: 13px/18px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+p {
+    display: inline-block;
+}
+ul {
+    padding: 0px;
+    li {
+        list-style: none;
+    }
+}
+input[type=text], input[type=number]{
+    width: auto;
+    height: 30px;
+    font-size: 12px;
+    padding: 0px 10px 0px 10px;
+    display: inline-block;
+}
+select.form-control {
+    display: inline-block;
+    width: auto;
+}
+.has-error {
+    input.error, input.error:focus {
+        border-color: $standard-red;
+        color: $standard-red;
+    }
+}
+.error {
+    color: $standard-red;
+}
+/* 按钮基本 */
+.btn {
+    border-radius: 3px;
+}
+.btn:hover {
+    @include transition(opacity, 0.4s);
+    opacity: 0.8;
+}
+.btn:active {
+    opacity: 1;
+}
+.btn-primary {
+    background-color: $standard-green;
+}
