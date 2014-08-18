@@ -1,12 +1,9 @@
 $icons: sprite-map("../images/*.png");
 
-i{
-    background: $icons;
-    display: inline-block; // or block
-}
-
 @each $i in sprite_names($icons){
     .icon-#{$i}{
+        background: $icons;
+        display: inline-block; // or block
         background-position: sprite-position($icons, $i);
         background-repeat: no-repeat;
         @include sprite-dimensions($icons, $i);

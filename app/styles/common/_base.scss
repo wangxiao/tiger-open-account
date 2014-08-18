@@ -1,6 +1,6 @@
 /* 各种标准色 */
 $standard-green: #69ba71;
-$standard-red: #ff4848;
+$standard-red: #a94442;
 $standard-black: #333333;
 $standard-blue: #00a0ff;
 $standard-gray: #e1e1e1;
@@ -17,7 +17,6 @@ body {
     height: 100%;
     position: absolute;
     overflow: auto;
-    font: 13px/18px "Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 p {
     display: inline-block;
@@ -38,6 +37,7 @@ input[type=text], input[type=number]{
 select.form-control {
     display: inline-block;
     width: auto;
+    padding: 2px;
 }
 .has-error {
     input.error, input.error:focus {
@@ -47,6 +47,32 @@ select.form-control {
 }
 .error {
     color: $standard-red;
+}
+.right {
+    color: $standard-green;
+}
+.hide {
+    display: block!important;
+    @include opacity(0);   
+    @include transition(opacity, 0.2s);
+}
+i, span{
+    &.hide {
+        @include transition(opacity, 0.2s);
+        display: inline-block!important;
+        @include opacity(0);       
+    }
+}
+.show {
+    @include opacity(1);
+    @include transition(opacity, 0.2s);
+}
+i, span{
+    &.show {
+        display: inline-block!important;
+        @include opacity(1);    
+        @include transition(opacity, 0.2s);
+    }
 }
 /* 按钮基本 */
 .btn {
