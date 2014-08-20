@@ -1,15 +1,11 @@
-.open-account {
+.open-step {
     position: absolute;
-    top: 0px;
+    top: $header-height;
     left: 0px;
     right: 0px;
     height: auto;
     min-height: 100%;
     background-color: $standard-gray;
-    .btn {
-        color: #fff;
-        background-color: $standard-green;
-    }
     .top-title {
         font-size: 20px;
         p {
@@ -28,11 +24,10 @@
     }
     .content {
         padding: 30px 50px 30px 50px;
-        width: 960px;
+        width: $page-width;
         background-color: #fff;
-        margin: 0px auto;
-        height: 100%;
-        min-height: 950px;
+        margin: 20px auto 20px+$footer-height auto;
+        height: 1150px;
         position: relative;
     }
     .progress-tip {
@@ -44,7 +39,7 @@
         .num {
             margin-left: 5px;
             font-size: 23px;
-            color: $standard-red;
+            color: $standard-green;
         }
     }
     .progress-toolbar {
@@ -96,36 +91,6 @@
             }
         }
     }
-    .base-form {
-        @include transition(all, 0.4s);
-        background-color: #fff;
-        position: absolute;
-        top: 170px;
-        bottom: 20px;
-        width: 820px;
-        padding-left: 170px;
-        padding-top: 30px;
-        .tip {
-            margin-right: 20px;
-        }
-        .item {
-            margin-bottom: 20px;
-        }
-        .item-title {
-            margin-right: 35px;
-        }
-        .item-input {
-            width: 230px;
-        }
-        .submit-btn {
-            width: 200px;
-            margin-left: 92px;
-        }
-        .mobile {
-            margin-left: 5px;
-            width: 201px;
-        }
-    }
     .application-form {
         @include transition(all, 0.4s);
         @include translate3d(100px, 0px, 0px);
@@ -136,9 +101,22 @@
             @include translate3d(-100px, 0px, 0px);
         }
         position: absolute;
-        top: 200px;
+        top: 170px;
         bottom: 20px;
         margin-left: 120px;
+        .base-form {
+            width: 820px;
+            .tip {
+                margin-right: 20px;
+            }
+            .item {
+                margin-bottom: 20px;
+            }
+            .submit-btn {
+                width: 200px;
+                margin-left: 92px;
+            }
+        }
         .title {
             font-size: 14px;
             font-weight: bold;
@@ -153,12 +131,14 @@
             margin-left: 162px;
         }
         .form {
-            margin-left: 70px;
+            margin-left: 50px;
             margin-bottom: 40px;
             .item {
                 margin-bottom: 10px;
                 .item-title {
                     width: 85px;
+                    text-align: right;
+                    margin-right: 30px;
                 }
             }
             .address {
@@ -168,7 +148,7 @@
                 .btn {
                     background-color: $standard-blue;
                     border: 1px solid #cccccc;
-                    width: 67px;
+                    width: 101px;
                 }
                 .no-check {
                     color: $standard-black;

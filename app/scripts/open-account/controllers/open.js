@@ -6,8 +6,8 @@ define([
     _
 ) {
 'use strict';
-return ['$scope', 'wdOpenAccount', 'wdDataSetting', 'wdCheck',
-function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck) {
+return ['$scope', 'wdOpenAccount', 'wdDataSetting', 'wdCheck', '$timeout',
+function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
     
     // 当前的进度，一共分为 4 步
     $scope.step = 1;
@@ -98,14 +98,24 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck) {
     $scope.nextStep = function() {
         switch ($scope.step) {
             case 1:
-                if ($scope.checkNameCn() && $scope.checkNameEn() && $scope.checkMobile() && $scope.checkEmail()) {
-                    $scope.step ++;
-                }
+                scrollTop();
+                $scope.step ++;
+                $scope.checkNameCn();
             break;
             case 2:
-                if ($scope.checkIdValue() && $scope.checkIssueDepart() && $scope.checkAddress() && $scope.checkSendAddress()) {
-                    $scope.step ++;
-                    submitAccount();
+                if ($scope.checkNameCn() &&
+                 $scope.checkNameEn() && 
+                 $scope.checkMobile() && 
+                 $scope.checkEmail() && 
+                 $scope.checkIdValue() && 
+                 $scope.checkIssueDepart() && 
+                 $scope.checkAddress() && 
+                 $scope.checkSendAddress()) {
+                    scrollTop();
+                    $timeout(function() {
+                        $scope.step ++;
+                    }, 350);
+                    // submitAccount();
                 }
             break;
         }
@@ -190,8 +200,32 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck) {
     $scope.checkIdValue = function() {
         if (!$scope.userData.idValue) {
             $scope.userData.uiIdValueError = '请填写证件号码';
+        } else if ($scope.userData.uiIdKind.value === 0 && $scope.userData.idValue.length !== 18) {
+            $scope.userData.uiIdValueError = '身份证号码位数不对';
         } else {
             $scope.userData.uiIdValueRight = true;
+            if ($scope.userData.uiIdKind.value === 0) {
+                var str = $scope.userData.idValue;
+                var year = str.substr(6, 4);
+                var month = str.substr(10, 2);
+                var day = str.substr(12, 2);
+                $scope.userData.uiYear = _.find($scope.years, function(v) {
+                    if (v.key === year) {
+                        return true;
+                    }
+                });
+                $scope.userData.uiMonth = _.find($scope.months, function(v) {
+                    if (v.key === month) {
+                        return true;
+                    }
+                });
+                $scope.userData.uiDay = _.find($scope.days, function(v) {
+                    if (v.key === day) {
+                        return true;
+                    }
+                });
+                $scope.userData.sex = str.substr(14, 3) % 2 === 1 ? 0 : 1;
+            }
             return true;
         }
     };
@@ -201,7 +235,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck) {
     };
     $scope.checkIssueDepart = function() {
         if (!$scope.userData.issueDepart) {
-            $scope.userData.uiIssueDepartError = '请填您的' + $scope.userData.uiIdKind.key + '签发机构';
+            $scope.userData.uiIssueDepartError = '请填您的' + $scope.userData.uiIdKind.key + '签发机构（证件背面）';
         } else {
             $scope.userData.uiIssueDepartRight = true;
             return true;
@@ -231,5 +265,10 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck) {
             return true;
         }
     };
+    function scrollTop() {
+        $scope.$emit('scrollTo', {
+            top: 0
+        });
+    }
 }];
 });

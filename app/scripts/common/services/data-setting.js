@@ -7,7 +7,7 @@ define([
 return ['$rootScope', '$http',
 function($rootScope, $http) {
     var years = [];
-    var i, l;
+    var i, l, key;
     for (i = 1960, l = 2014; i <= l; i ++) {
         years.push({
             key: String(i),
@@ -16,15 +16,23 @@ function($rootScope, $http) {
     }
     var months = [];
     for (i = 1, l = 12; i <= l; i ++) {
+        key = String(i);
+        if (i < 10) {
+            key = '0' + key;
+        }
         months.push({
-            key: String(i),
+            key: key,
             value: i
         });
     }
     var days = [];
     for (i = 1, l = 31; i <= l; i ++) {
+        key = String(i);
+        if (i < 10) {
+            key = '0' + key;
+        }
         days.push({
-            key: String(i),
+            key: key,
             value: i
         });
     }

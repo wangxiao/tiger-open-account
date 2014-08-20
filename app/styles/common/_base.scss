@@ -4,22 +4,19 @@ $standard-red: #a94442;
 $standard-black: #333333;
 $standard-blue: #00a0ff;
 $standard-gray: #e1e1e1;
+$standard-orange: #ef8333;
+$page-width: 960px;
 
 /* 其他公用颜色 */
 /* 去掉 Mac 下浏览器惯性滚动 */
-html {
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-}
 body {
     width: 100%;
     height: 100%;
     position: absolute;
-    overflow: auto;
 }
 p {
     display: inline-block;
+    margin: 0px;
 }
 ul {
     padding: 0px;
@@ -33,6 +30,7 @@ input[type=text], input[type=number]{
     font-size: 12px;
     padding: 0px 10px 0px 10px;
     display: inline-block;
+    border-radius: 0px;
 }
 select.form-control {
     display: inline-block;
@@ -53,7 +51,9 @@ select.form-control {
 }
 .hide {
     display: block!important;
-    @include opacity(0);   
+    @include opacity(0);
+    height: 0px;
+    overflow: hidden;
     @include transition(opacity, 0.2s);
 }
 i, span{
@@ -76,9 +76,12 @@ i, span{
 }
 /* 按钮基本 */
 .btn {
-    border-radius: 3px;
+    border-radius: 0px;
+    color: #fff;
+    background-color: $standard-green;
 }
 .btn:hover {
+    color: #fff;
     @include transition(opacity, 0.4s);
     opacity: 0.8;
 }

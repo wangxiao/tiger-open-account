@@ -9,6 +9,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* 公共基础 */
 @import "common/base";
+@import "common/animate";
 @import "common/icons";
+@import "common/header";
+@import "common/footer";
+@import "common/grow-bar";
+@import "common/lazy-show";
 
-@import "open-account/account";
+@import "open-account/open-step";
+@import "open-account/open-index";

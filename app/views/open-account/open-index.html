@@ -1,0 +1,86 @@
+<div class="open-index" ng-class="{'hide': (step !== 1), 'show': (step === 1)}">
+    <div class="header">
+        <div class="content">
+            <p class="title" wd-lazy-show>炒港股、美股、期货  一个账户搞定</p>
+            <div class="form" wd-lazy-show>
+                <input type="text" class="form-control item-input" ng-model="userData.nameCn" placeholder="真实姓名">
+                <input type="text" class="form-control item-input" ng-model="userData.mobile" placeholder="手机号码">
+                <div class="open-btn btn" ng-click="nextStep();"><i class="glyphicon glyphicon-arrow-right"></i>立即免费开户</div>
+            </div>
+        </div>
+    </div>
+    <div class="tabs">
+        <div class="content">
+            <div class="tab">投资无门槛</div>
+            <div class="tab">交易费用低</div>
+            <div class="tab">投资无门槛</div>
+        </div>
+    </div>
+    <div class="part1">
+        <div class="content">
+            <p class="title" wd-lazy-show data-delay="300">投资无门槛，资金很安全</p>
+            <ul class="compare" wd-lazy-show data-delay="300">
+                <li>
+                    <p class="item-title">国京证券</p>
+                    <span class="money" wd-grow-bar data-grow-num="3"></span>
+                    <p class="tip">账户无最低存入金额限制</p>
+                </li>
+                <li>
+                    <p class="item-title">其他证券</p>
+                    <span class="money" wd-grow-bar data-grow-num="100"></span>
+                    <p class="tip">1 万元</p>
+                </li>
+                <li>
+                    <p class="item-title">沪港通</p>
+                    <span class="money" wd-grow-bar data-grow-num="500"></span>
+                    <p class="tip">50 万元</p>
+                </li>
+            </ul>
+            <div class="licence" wd-lazy-show data-delay="300">
+                <i class="icon-licence"></i>
+                <br>
+                <p>国京证券全面接受香港证监会监管，资金安全有保障！</p>
+            </div>
+        </div>
+    </div>
+    <div class="part2">
+        <div class="content">
+            <p class="title" wd-lazy-show data-delay="300">支持多平台交易，0.05% 低佣金更省钱</p>
+            <ul class="list" wd-lazy-show data-delay="300">
+                <li class="download-btn btn"><i class="icon-win-small"></i>PC 版</li>
+                <li class="download-btn btn"><i class="icon-apple-small"></i>iOS 版</li>
+                <li class="download-btn btn"><i class="icon-android-small"></i>Android 版</li>
+            </ul>
+            <i class="icon-app-demo" wd-lazy-show></i>
+        </div>
+    </div>
+    <div class="part3">
+        <div class="content">
+            <p class="title" wd-lazy-show>足不出户，免费开户</p>
+            <p class="title2" wd-lazy-show>领先同业，提供上门开户，快至 12 小时领先开户</p>
+            <div class="step">
+                <div class="block" wd-lazy-show>
+                    <i class="icon-write-form"></i>
+                    <br>
+                    <p>线上填表</p>
+                </div>
+                <div class="block" wd-lazy-show>
+                    <i class="icon-sign"></i>
+                    <br>
+                    <p>申请人签字</p>
+                </div>
+                <div class="block" wd-lazy-show>
+                    <i class="icon-msg-pop"></i>
+                    <br>
+                    <p>持牌代表回访</p>
+                </div>
+                <div class="block" wd-lazy-show>
+                    <i class="icon-card"></i>
+                    <br>
+                    <p>开户成功入金交易</p>
+                </div>
+            </div>
+            <div class="open-btn btn" ng-click="nextStep();"><i class="glyphicon glyphicon-arrow-right"></i>立即免费开户</div>
+        </div>
+    </div>
+</div>

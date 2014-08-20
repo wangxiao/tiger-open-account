@@ -1,13 +1,20 @@
 /*jshint unused: vars */
 define([
     'angular',
-    'text!../views/open-account/open.html',
+    'text!templates/open-account/open.html',
     'open-account/controllers/open',
     'open-account/services/open-ser',
     'common/directives/tooltip',
     'common/services/config',
     'common/services/data-setting',
-    'common/services/check'
+    'common/services/check',
+    'common/directives/header',
+    'common/directives/footer',
+    'common/directives/scrollTo',
+    'open-account/directives/open-step',
+    'open-account/directives/open-index',
+    'common/directives/lazy-show',
+    'common/directives/grow-bar'
 ], function (
     angular,
     openAccountTpl,
@@ -16,7 +23,14 @@ define([
     tooltipDirective,
     config,
     dataSetting,
-    checkSer
+    checkSer,
+    headerDir,
+    footerDir,
+    scrollToDir,
+    openStepDir,
+    openIndexDir,
+    lazyShowDir,
+    growBarDir
 ) {
 'use strict';
 return angular.module('tiger', [
@@ -26,7 +40,7 @@ return angular.module('tiger', [
     'ngRoute'
 ]).config(function ($routeProvider, $httpProvider) {
     $routeProvider
-    .when('/', {
+    .when('/open-account', {
         template: openAccountTpl,
         controller: openAccountCtrl
     });
@@ -55,6 +69,13 @@ return angular.module('tiger', [
     });
 })
 .directive('wdTooltip', tooltipDirective)
+.directive('wdHeader', headerDir)
+.directive('wdFooter', footerDir)
+.directive('wdScrollTo', scrollToDir)
+.directive('wdOpenStep', openStepDir)
+.directive('wdOpenIndex', openIndexDir)
+.directive('wdLazyShow', lazyShowDir)
+.directive('wdGrowBar', growBarDir)
 .factory('wdOpenAccount', openAccountSer)
 .factory('wdConfig', config)
 .factory('wdDataSetting', dataSetting)
