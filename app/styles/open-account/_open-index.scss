@@ -9,7 +9,7 @@
     .header {
         background-color: #29acc8;
         color: #fff;
-        height: 260px;
+        height: 320px;
         .content {
             position: relative;
             text-align: center;
@@ -30,6 +30,11 @@
                     margin-right: 30px;
                 }
             }
+            .icon-title-low-money {
+                position: absolute;
+                left: 250px;
+                top: 50px;
+            }
         }
     }
     .tabs {
@@ -41,7 +46,6 @@
         }
         .tab {
             color: #fff;
-            cursor: pointer;
             display: inline-block;
             width: 310px;
             text-align: center;
@@ -91,7 +95,9 @@
         }
         .licence {
             text-align: center;
-            cursor: pointer;
+            .icon-licence {
+                cursor: pointer;
+            }
             p {
                 width: 230px;
                 color: #888;
@@ -176,5 +182,9 @@
                 }
             }
         }
+    }
+    .licence-pic {
+        width: 600px;
+        margin-left: -160px;
     }
 }

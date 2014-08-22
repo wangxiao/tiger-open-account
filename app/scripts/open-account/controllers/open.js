@@ -115,7 +115,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
                     $timeout(function() {
                         $scope.step ++;
                     }, 350);
-                    // submitAccount();
+                    submitAccount();
                 }
             break;
         }
@@ -126,6 +126,13 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
         wdOpenAccount.openAccount(obj).then(function(data) {
             console.log(data);
         });
+    }
+    function recordAccount() {
+        var obj = filter();
+        console.log(obj);
+        wdOpenAccount.openPartAccount(obj).then(function(data) {
+            console.log(data);
+        });        
     }
     $scope.focusNameCn = function() {
         $scope.userData.uiNameCnError = '';
@@ -173,6 +180,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
         } else if (/\D/g.test($scope.userData.mobile)) {
             $scope.userData.uiMobileError = '手机号码中有非数字？';
         } else {
+
             $scope.userData.uiMobileRight = true;
             return true;
         }

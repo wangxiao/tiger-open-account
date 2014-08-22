@@ -1,4 +1,4 @@
-$icons: sprite-map("../images/*.png");
+$icons: sprite-map("../images/icons/*.png");
 
 @each $i in sprite_names($icons){
     .icon-#{$i}{

@@ -13,6 +13,8 @@ require.config({
         'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
         'angular-scenario': '../../bower_components/angular-scenario/angular-scenario',
         tooltip: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
+        modal: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal',
+        'requirejs-text': '../../bower_components/requirejs-text/text',
         affix: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix',
         alert: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert',
         button: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button',
@@ -22,9 +24,7 @@ require.config({
         tab: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab',
         transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
         scrollspy: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy',
-        modal: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal',
-        popover: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover',
-        'requirejs-text': '../../bower_components/requirejs-text/text'
+        popover: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover'
     },
     shim: {
         jquery: {
@@ -58,6 +58,11 @@ require.config({
             deps: [
                 'jquery'
             ]
+        },
+        modal: {
+            deps: [
+                'jquery'
+            ]
         }
     },
     priority: [
@@ -72,6 +77,7 @@ require.config({
 window.name = 'NG_DEFER_BOOTSTRAP!';
 
 require([
+    'jquery',
     'angular',
     'app',
     'angular-route',
@@ -79,8 +85,9 @@ require([
     'angular-sanitize',
     'angular-resource',
     'tooltip',
+    'modal',
     'text'
-], function(angular, app, ngRoutes, ngCookies, ngSanitize, ngResource) {
+], function(jquery, angular, app, ngRoutes, ngCookies, ngSanitize, ngResource) {
     'use strict';
     /* jshint ignore:start */
     var $html = angular.element(document.getElementsByTagName('html')[0]);

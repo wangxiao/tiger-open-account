@@ -23,6 +23,9 @@ return [function() {
                     setTimeout(function() {
                         ele.addClass('animated fadeInUp');
                     }, delay);
+                    setTimeout(function() {
+                        ele.removeClass('wd-lazy-show animated fadeInUp');
+                    }, delay + 1000);
                 }
             };
             checkShow();

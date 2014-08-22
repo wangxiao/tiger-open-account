@@ -14,7 +14,8 @@ define([
     'open-account/directives/open-step',
     'open-account/directives/open-index',
     'common/directives/lazy-show',
-    'common/directives/grow-bar'
+    'common/directives/grow-bar',
+    'common/directives/before-unload'
 ], function (
     angular,
     openAccountTpl,
@@ -30,7 +31,8 @@ define([
     openStepDir,
     openIndexDir,
     lazyShowDir,
-    growBarDir
+    growBarDir,
+    beforeUnloadDir
 ) {
 'use strict';
 return angular.module('tiger', [
@@ -76,6 +78,7 @@ return angular.module('tiger', [
 .directive('wdOpenIndex', openIndexDir)
 .directive('wdLazyShow', lazyShowDir)
 .directive('wdGrowBar', growBarDir)
+.directive('wdBeforeUnload', beforeUnloadDir)
 .factory('wdOpenAccount', openAccountSer)
 .factory('wdConfig', config)
 .factory('wdDataSetting', dataSetting)

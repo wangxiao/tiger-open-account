@@ -31,7 +31,9 @@ module.exports = function (grunt) {
     watch: {
       bower: {
         files: ['bower.json'],
-        tasks: ['wiredep']
+        tasks: [
+          // 'wiredep'
+        ]
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
@@ -40,13 +42,22 @@ module.exports = function (grunt) {
           livereload: '<%= connect.options.livereload %>'
         }
       },
-      jsTest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+      html: {
+        files: ['<%= yeoman.app %>/views/{,*/}*.html'],
+        options: {
+          livereload: true
+        }
       },
+      // jsTest: {
+      //   files: ['test/spec/{,*/}*.js'],
+      //   tasks: ['newer:jshint:test', 'karma']
+      // },
       compass: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+        tasks: [
+          'compass:server', 
+          'autoprefixer'
+        ]
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -175,7 +186,6 @@ module.exports = function (grunt) {
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
-
 
     // Compiles Sass to CSS and generates necessary files if requested
     compass: {
@@ -434,7 +444,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'wiredep',
+      // 'wiredep',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
@@ -459,7 +469,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'wiredep',
+    // 'wiredep',
     'bower:app',
     'replace:test',
     'useminPrepare',

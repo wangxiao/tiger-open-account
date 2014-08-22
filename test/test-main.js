@@ -25,6 +25,8 @@ requirejs.config({
         'angular-sanitize': '../../bower_components/angular-sanitize/angular-sanitize',
         'angular-scenario': '../../bower_components/angular-scenario/angular-scenario',
         tooltip: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip',
+        modal: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal',
+        'requirejs-text': '../../bower_components/requirejs-text/text',
         affix: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix',
         alert: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert',
         button: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button',
@@ -34,9 +36,7 @@ requirejs.config({
         tab: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab',
         transition: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition',
         scrollspy: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy',
-        modal: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal',
-        popover: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover',
-        'requirejs-text': '../../bower_components/requirejs-text/text'
+        popover: '../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover'
     },
 
     shim: {

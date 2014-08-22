@@ -2,6 +2,7 @@
     <div class="header">
         <div class="content">
             <p class="title" wd-lazy-show>炒港股、美股、期货  一个账户搞定</p>
+            <i class="icon-title-low-money"></i>
             <div class="form" wd-lazy-show>
                 <input type="text" class="form-control item-input" ng-model="userData.nameCn" placeholder="真实姓名">
                 <input type="text" class="form-control item-input" ng-model="userData.mobile" placeholder="手机号码">
@@ -37,7 +38,7 @@
                 </li>
             </ul>
             <div class="licence" wd-lazy-show data-delay="300">
-                <i class="icon-licence"></i>
+                <i class="icon-licence" data-toggle="modal" data-target=".bs-example-modal-sm"></i>
                 <br>
                 <p>国京证券全面接受香港证监会监管，资金安全有保障！</p>
             </div>
@@ -47,9 +48,21 @@
         <div class="content">
             <p class="title" wd-lazy-show data-delay="300">支持多平台交易，0.05% 低佣金更省钱</p>
             <ul class="list" wd-lazy-show data-delay="300">
-                <li class="download-btn btn"><i class="icon-win-small"></i>PC 版</li>
-                <li class="download-btn btn"><i class="icon-apple-small"></i>iOS 版</li>
-                <li class="download-btn btn"><i class="icon-android-small"></i>Android 版</li>
+                <li>
+                    <a class="download-btn btn" target="_blank" href="http://www.guoking.com.hk/UploadFiles/2014/07/0710482624906445.zip">
+                        <i class="icon-win-small"></i>PC 版
+                    </a>
+                </li>
+                <li>
+                    <a class="download-btn btn" target="_blank" href="https://itunes.apple.com/cn/app/guo-jing-shan-dian-jiao-yi/id834107884">
+                        <i class="icon-apple-small"></i>iOS 版
+                    </a>
+                </li>
+                <li>
+                    <a class="download-btn btn" target="_blank" href="http://www.guoking.com.hk/UploadFiles/2014/03/26142032EF228E00.apk">
+                        <i class="icon-android-small"></i>Android 版
+                    </a>
+                </li>
             </ul>
             <i class="icon-app-demo" wd-lazy-show></i>
         </div>
@@ -83,4 +96,13 @@
             <div class="open-btn btn" ng-click="nextStep();"><i class="glyphicon glyphicon-arrow-right"></i>立即免费开户</div>
         </div>
     </div>
+
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <img class="licence-pic" src="../../images/20140530212630454.jpg">
+        </div>
+      </div>
+    </div>
+
 </div>
