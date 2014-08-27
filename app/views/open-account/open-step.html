@@ -164,7 +164,12 @@
             </ul>
             <div class="protocol">
                 <input type="checkbox" ng-model="userData.uiAccept">
-                <p>本人已经阅读且理解认同账户的<a href="">《风险披露声明》以及《客户协议书》</a></p>
+                <p>本人已经阅读且理解认同账户的
+                    <a ng-if="userData.uiIsSecurity" href="http://register.guoking.com.hk:8080/WebBusiness/gk_open/pdf/stock_agrement.pdf">《证券客户协议书》</a>
+                    <a ng-if="userData.uiIsFutures" href="http://register.guoking.com.hk:8080/WebBusiness/gk_open/pdf/futures_agrement.pdf">《期货客户协议书》</a>
+                    <a href="http://register.guoking.com.hk:8080/WebBusiness/gk_open/pdf/futures_risk.pdf">《风险披露声明》</a> 和
+                    <a href="http://register.guoking.com.hk:8080/WebBusiness/gk_open/pdf/secret.pdf">《私隐政策》</a>
+                </p>
             </div>
             <div class="submit-btn btn" ng-click="nextStep();" ng-disabled="!userData.uiAccept">确认，进入下一步</div>
         </div>

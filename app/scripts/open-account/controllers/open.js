@@ -17,6 +17,8 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
     $scope.years = wdDataSetting.years;
     $scope.months = wdDataSetting.months;
     $scope.days = wdDataSetting.days;
+    // 首页的 tab
+    $scope.tab = 1;
     $scope.userData = {
         nameCn: '',
         nameEn: '',

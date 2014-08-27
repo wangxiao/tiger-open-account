@@ -12,13 +12,13 @@
     </div>
     <div class="tabs">
         <div class="content">
-            <div class="tab">投资无门槛</div>
-            <div class="tab">交易费用低</div>
-            <div class="tab">投资无门槛</div>
+            <div class="tab" ng-class="{current: tab === 1}" ng-click="tab = 1;">投资无门槛</div>
+            <div class="tab" ng-class="{current: tab === 2}" ng-click="tab = 2;">交易费用低</div>
+            <div class="tab" ng-class="{current: tab === 3}" ng-click="tab = 3;">PK 港股通优势</div>
         </div>
     </div>
     <div class="part1">
-        <div class="content">
+        <div class="content" ng-class="{current: tab === 1}">
             <p class="title" wd-lazy-show data-delay="300">投资无门槛，资金很安全</p>
             <ul class="compare" wd-lazy-show data-delay="300">
                 <li>
@@ -42,6 +42,86 @@
                 <br>
                 <p>国京证券全面接受香港证监会监管，资金安全有保障！</p>
             </div>
+        </div>
+
+        <div class="content" ng-class="{current: tab === 2}">
+            <table class="table charge-form">
+                <tr class="table-header">
+                    <th>公司名称</th>
+                    <th>佣金</th>
+                    <th>最低交易费（港元）</th>
+                </tr>
+                <tr>
+                    <td>国泰君安</td>
+                    <td>0.2%</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>国信证券</td>
+                    <td>0.25%</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>国京证券</td>
+                    <td class="strong">0.05%</td>
+                    <td class="strong">无</td>
+                </tr>
+                <tr>
+                    <td>富途证券</td>
+                    <td>0.05%</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>中银国际</td>
+                    <td>0.25%</td>
+                    <td>--</td>
+                </tr>
+                <tr>
+                    <td>招商证券</td>
+                    <td>0.25%</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>工银亚洲</td>
+                    <td>0.15%</td>
+                    <td>88</td>
+                </tr>
+                <tr>
+                    <td>国元证券</td>
+                    <td>0.25%</td>
+                    <td>100</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="content" ng-class="{current: tab === 3}">
+            <table class="table pk-form">
+                <tr class="table-header">
+                    <th class="strong">优势 PK</th>
+                    <th>港股通</th>
+                    <th>国京（香港）证券期货账户</th>
+                </tr>
+                <tr>
+                    <td>入市资格</td>
+                    <td>50 万资金门槛</td>
+                    <td>无需求</td>
+                </tr>
+                <tr>
+                    <td>投资品种</td>
+                    <td>恒生大型、中型成分股<br>A+H 股里的 H 股</td>
+                    <td>1、香港证券市场所有交易品种；<br>2、美国证券市场所有交易品种；<br>3、国京期货、指数 CFD、外汇品种；</td>
+                </tr>
+                <tr>
+                    <td>交易工具</td>
+                    <td>禁止融资融券</td>
+                    <td>可沽空、融资、杠杆交易</td>
+                </tr>
+                <tr>
+                    <td>交易额度</td>
+                    <td>证券公司每日有总额度限制<br>达到总额度时</td>
+                    <td>无限制</td>
+                </tr>
+            </table>
         </div>
     </div>
     <div class="part2">
@@ -100,7 +180,7 @@
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <img class="licence-pic" src="../../images/20140530212630454.jpg">
+            <img class="licence-pic" src="../../images/others/20140530212630454.jpg">
         </div>
       </div>
     </div>

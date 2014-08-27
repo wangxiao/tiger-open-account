@@ -51,19 +51,38 @@
             text-align: center;
             line-height: 50px;
             font-size: 16px;
+            cursor: pointer;
+            @include transition(all, 0.4s);
+            &.current {
+                background-color: #29acc8;
+                cursor: default;
+                @include opacity(1);
+            }
+            &:hover {
+                @include opacity(0.8);
+            }
         }
     }
     .part1 {
         background-color: #fff;
         height: 510px;
         padding-top: 40px;
+        overflow: hidden;
         .content {
+            @include transition(opacity, 0.4s);
             margin: 0 auto;
             width: $page-width;
+            height: 0px;
+            overflow: hidden;
+            @include opacity(0);
             .title {
                 display: block;
                 text-align: center;
                 font-size: 20px;
+            }
+            &.current {
+                height: auto;
+                @include opacity(1);
             }
         }
         .compare {
@@ -102,6 +121,55 @@
                 width: 230px;
                 color: #888;
                 margin-top: 10px;
+            }
+        }
+        .charge-form {
+            width: 820px;
+            margin-left: 80px;
+            text-align: center;
+            th, td {
+                height: 34px;
+                line-height: 34px;
+                text-align: center;
+                border: none;
+            }
+            tr {
+                &:hover {
+                    background-color: #f2f2f2;
+                }
+            }
+            .table-header {
+                background-color: #f2f2f2;
+            }
+            .strong {
+                color: $standard-orange;
+            }
+        }
+        .pk-form {
+            width: 820px;
+            margin-left: 80px;
+            th, td {
+                width: 280px;
+                height: 40px;
+                line-height: 40px;
+                border: none;
+            }
+            tr {
+                &:hover {
+                    background-color: #f2f2f2;
+                }
+                th:last-child {
+                    width: 270px;
+                }
+                th:first-child, td:first-child {
+                    text-align: center;
+                }
+            }
+            .table-header {
+                background-color: #f2f2f2;
+            }
+            .strong {
+                color: $standard-orange;
             }
         }
     }

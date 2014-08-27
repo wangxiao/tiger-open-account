@@ -341,23 +341,25 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>',
           src: [
-            '*.{ico,png,txt}',
+            // '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
             'bower_components/**/*',
-            'images/{,*/}*.{webp}',
+            'images/others/{,*/}*.{webp}',
             'fonts/*'
           ]
-        }, {
-          expand: true,
-          cwd: '.tmp/images',
-          dest: '<%= yeoman.dist %>/images',
-          src: ['generated/*']
-        }, {
+        },
+        {
           expand: true,
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+          dest: '<%= yeoman.dist %>'
+        },
+        {
+          expand: true,
+          cwd: '.',
+          src: 'bower_components/requirejs/*',
           dest: '<%= yeoman.dist %>'
         }]
       },
@@ -385,12 +387,12 @@ module.exports = function (grunt) {
     },
 
     // Test settings
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true
-      }
-    },
+    // karma: {
+    //   unit: {
+    //     configFile: 'karma.conf.js',
+    //     singleRun: true
+    //   }
+    // },
 
     // Settings for grunt-bower-requirejs
     bower: {
@@ -471,14 +473,14 @@ module.exports = function (grunt) {
     'clean:dist',
     // 'wiredep',
     'bower:app',
-    'replace:test',
+    // 'replace:test',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
     'concat',
     'ngAnnotate',
     'copy:dist',
-    'cdnify',
+    // 'cdnify',
     'cssmin',
     // Below task commented out as r.js (via grunt-contrib-requirejs) will take care of this
     'uglify',
