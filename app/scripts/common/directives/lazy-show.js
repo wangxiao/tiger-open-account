@@ -18,7 +18,7 @@ return [function() {
             var top = ele.offset().top;
             var flag = false;
             var checkShow = function() {
-                if ($(window).scrollTop() + $(window).height() > top + 200) {
+                if ($(window).scrollTop() + $(window).height() > top + 50) {
                     flag = true;
                     setTimeout(function() {
                         ele.addClass('animated fadeInUp');

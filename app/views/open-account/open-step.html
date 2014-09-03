@@ -1,4 +1,4 @@
-<div class="open-step" wd-scroll-to wd-before-unload>
+<div class="open-step" wd-scroll-to wd-before-unload ng-keydown="keyDown($event);">
     <div class="content">
         <div class="top-title">
             <p>国京证券开户申请</p>
@@ -58,15 +58,6 @@
                         <p>{{userData.uiNameCnError}}</p>
                     </span>
                 </li>
-                <li class="item" ng-class="{'has-error': userData.uiNameEnError}">
-                    <p class="item-title">拼音姓名</p>
-                    <input type="text" class="form-control item-input" ng-model="userData.nameEn" ng-blur="checkNameEn()" ng-focus="focusNameEn()">
-                    <i class="right glyphicon glyphicon-ok" ng-class="{show: userData.uiNameEnRight, hide: !userData.uiNameEnRight}"></i>
-                    <span class="error" ng-class="{show: userData.uiNameEnError, hide: !userData.uiNameEnError}">
-                        <i class="glyphicon glyphicon-remove"></i>
-                        <p>{{userData.uiNameEnError}}</p>
-                    </span>
-                </li>
                 <li class="item" ng-class="{'has-error': userData.uiMobileError}">
                     <p class="item-title">手机号码</p>
                     <input type="text" class="mobile form-control item-input" ng-model="userData.mobile" ng-blur="checkMobile()" ng-focus="focusMobile()">
@@ -74,6 +65,16 @@
                     <span class="error" ng-class="{show: userData.uiMobileError, hide: !userData.uiMobileError}">
                         <i class="glyphicon glyphicon-remove"></i>
                         <p>{{userData.uiMobileError}}</p>
+                    </span>
+                </li>
+                <li class="item" ng-class="{'has-error': userData.uiNameEnError}">
+                    <p class="item-title">拼音姓名</p>
+                    姓：<input type="text" class="form-control item-input nameEn" ng-model="userData.uiNameEnXing" ng-blur="checkNameEn()" ng-focus="focusNameEn()">
+                    名：<input type="text" class="form-control item-input nameEn" ng-model="userData.uiNameEnMing" ng-blur="checkNameEn()" ng-focus="focusNameEn()">
+                    <i class="right glyphicon glyphicon-ok" ng-class="{show: userData.uiNameEnRight, hide: !userData.uiNameEnRight}"></i>
+                    <span class="error" ng-class="{show: userData.uiNameEnError, hide: !userData.uiNameEnError}">
+                        <i class="glyphicon glyphicon-remove"></i>
+                        <p>{{userData.uiNameEnError}}</p>
                     </span>
                 </li>
                 <li class="item" ng-class="{'has-error': userData.uiEmailError}">
@@ -184,9 +185,10 @@
             <div class="photo">
                 <i class="icon-witness-photo"></i>
                 <br>
-                <p class="name">王潇</p>
+                <p class="name"></p>
             </div>
-            <div class="btn">QQ 立即联系</div>
+            <a class="btn" target="_blank" href="tencent://message/?uin=2748698839">QQ 立即联系</a>
+            <div class="btn" ng-click="resetStep()">重新开户</div>
         </div>
         <!-- witness end -->
 

@@ -6,11 +6,11 @@ define([
     _
 ) {
 'use strict';
-return ['$scope', 'wdOpenAccount', 'wdDataSetting', 'wdCheck', '$timeout',
-function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
+return ['$scope', 'wdOpenAccount', 'wdDataSetting', 'wdCheck', '$timeout', '$window',
+function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $window) {
     
     // 当前的进度，一共分为 4 步
-    $scope.step = 1;
+    $scope.step = Number($window.localStorage.getItem('progress')) || 1;
     $scope.idKindsOptions = wdDataSetting.idKinds;
     $scope.countrysOptions = wdDataSetting.countrys;
     $scope.employmentsOptions = wdDataSetting.employments;
@@ -52,6 +52,8 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
         uiYear: $scope.years[25],
         uiMonth: $scope.months[6],
         uiDay: $scope.days[15],
+        uiNameEnXing: '',
+        uiNameEnMing: '',
         uiAccept: true,
         uiNameCnError: '',
         uiNameCnRight: false,
@@ -124,14 +126,18 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
     };
     function submitAccount() {
         var obj = filter();
-        console.log(obj);
         wdOpenAccount.openAccount(obj).then(function(data) {
             console.log(data);
+            if (data.code !== 0) {
+                $window.alert('开户失败，请重试！');
+                $scope.step = 2;
+            } else {
+                $window.localStorage.setItem('progress', 3);
+            }
         });
     }
     function recordAccount() {
         var obj = filter();
-        console.log(obj);
         wdOpenAccount.openPartAccount(obj).then(function(data) {
             console.log(data);
         });        
@@ -149,8 +155,12 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
             $scope.userData.uiNameCnRight = true;
             wdDataSetting.pinyin($scope.userData.nameCn).then(function(data) {
                 if (!$scope.userData.nameEn) {
-                    _.each(data.pinyin, function(v) {
-                        $scope.userData.nameEn += v[0];
+                    _.each(data.pinyin, function(v, i) {
+                        if (i === 0) {
+                            $scope.userData.uiNameEnXing = v[0];
+                        } else {
+                            $scope.userData.uiNameEnMing += v[0];
+                        }
                     });
                 }
             });
@@ -163,9 +173,10 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
         $scope.userData.uiNameEnRight = false;
     };
     $scope.checkNameEn = function() {
-        if (!$scope.userData.nameEn) {
+        $scope.userData.nameEn = $scope.userData.uiNameEnXing + ' ' + $scope.userData.uiNameEnMing;
+        if (!$scope.userData.uiNameEnXing || !$scope.userData.uiNameEnMing || !$scope.userData.nameEn) {
             $scope.userData.uiNameEnError = '请填写拼音姓名';
-        } else if (/[^A-Z|a-z]+/g.test($scope.userData.nameEn)) {
+        } else if (/[^A-Z|a-z|\s]+/g.test($scope.userData.nameEn)) {
             $scope.userData.uiNameEnError = '有非英文字符';
         } else {
             $scope.userData.uiNameEnRight = true;
@@ -182,7 +193,6 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
         } else if (/\D/g.test($scope.userData.mobile)) {
             $scope.userData.uiMobileError = '手机号码中有非数字？';
         } else {
-
             $scope.userData.uiMobileRight = true;
             return true;
         }
@@ -280,5 +290,21 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout) {
             top: 0
         });
     }
+    $scope.resetStep = function() {
+        $window.localStorage.removeItem('progress');
+        $scope.step = 1;
+    };
+    $scope.$on('beforeunload', function() {
+        if ($scope.step < 3) {
+            if ($scope.checkNameCn && ($scope.checkMobile() || $scope.checkEmail())) {
+                recordAccount();
+            }
+        }
+    });
+    $scope.keyDown = function(e) {
+        if (e.keyCode === 13) {
+            $scope.nextStep();
+        }
+    };
 }];
 });

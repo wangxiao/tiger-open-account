@@ -144,6 +144,9 @@
             .address {
                 width: 320px;
             }
+            .nameEn {
+                width: 70px;
+            }
             .sex-chose {
                 .btn {
                     background-color: $standard-blue;
@@ -183,6 +186,7 @@
             width: 200px;
             margin: 0 auto;
             margin-bottom: 20px;
+            margin-top: 40px;
             padding-top: 30px;
             border-radius: 3px;
             background-color: $standard-gray;

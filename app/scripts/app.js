@@ -42,6 +42,9 @@ return angular.module('tiger', [
     'ngRoute'
 ]).config(function ($routeProvider, $httpProvider) {
     $routeProvider
+    .otherwise({
+        redirectTo: '/open-account'
+    })
     .when('/open-account', {
         template: openAccountTpl,
         controller: openAccountCtrl
