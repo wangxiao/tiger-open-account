@@ -6,8 +6,8 @@ define([
     _
 ) {
 'use strict';
-return ['$scope', 'wdOpenAccount', 'wdDataSetting', 'wdCheck', '$timeout', '$window',
-function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $window) {
+return ['$scope', 'wdOpenAccount', 'wdDataSetting', 'wdCheck', '$timeout', '$window', '$location',
+function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $window, $location) {
     
     // 当前的进度，一共分为 4 步
     $scope.step = Number($window.localStorage.getItem('progress')) || 1;
@@ -19,59 +19,68 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
     $scope.days = wdDataSetting.days;
     // 首页的 tab
     $scope.tab = 1;
-    $scope.userData = {
-        nameCn: '',
-        nameEn: '',
-        mobile: '',
-        email: '',
-        // 0 只开证券账户，1 只开期货账户， 2 两个都开。
-        accountType: 0,
-        country: 0,
-        // 证件类型
-        idKind: 0,
-        idValue: '',
-        // 签发机构，xxx 公安局
-        issueDepart: '',
-        // 0 男，1 女，2 其他
-        sex: 0,
-        birthday: '',
-        // 就业状况
-        employment: 0,
-        // 常住地址
-        address: '',
-        // 通讯地址
-        sendAddress: '',
-        // ui 相关
-        // 证券
-        uiIsSecurity: true,
-        // 期货 
-        uiIsFutures: false,
-        uiCountry: $scope.countrysOptions[0],
-        uiIdKind: $scope.idKindsOptions[0],
-        uiEmployment: $scope.employmentsOptions[0],
-        uiYear: $scope.years[25],
-        uiMonth: $scope.months[6],
-        uiDay: $scope.days[15],
-        uiNameEnXing: '',
-        uiNameEnMing: '',
-        uiAccept: true,
-        uiNameCnError: '',
-        uiNameCnRight: false,
-        uiNameEnError: '',
-        uiNameEnRight: false,
-        uiMobileError: '',
-        uiMobileRight: false,
-        uiEmailError: '',
-        uiEmailRight: false,
-        uiIdValueError: '',
-        uiIdValueRight: false,
-        uiIssueDepartError: '',
-        uiIssueDepartRight: false,
-        uiAddressError: '',
-        uiAddressRight: false,
-        uiSendAddressError: '',
-        uiSendAddressRight: false
-    };
+    reset();
+    var brokerId = '';
+    var absUrl = $location.absUrl();
+    if (/broker_id/.test(absUrl)) {
+        brokerId = absUrl.match('broker_id=(.*)#')[1];
+    }
+    function reset() {
+        $scope.userData = {
+            nameCn: '',
+            nameEn: '',
+            mobile: '',
+            email: '',
+            // 0 只开证券账户，1 只开期货账户， 2 两个都开。
+            accountType: 0,
+            country: 0,
+            // 证件类型
+            idKind: 0,
+            idValue: '',
+            // 签发机构，xxx 公安局
+            issueDepart: '',
+            // 0 男，1 女，2 其他
+            sex: 0,
+            birthday: '',
+            // 就业状况
+            employment: 0,
+            // 常住地址
+            address: '',
+            // 通讯地址
+            sendAddress: '',
+            brokerId: brokerId,
+            // ui 相关
+            // 证券
+            uiIsSecurity: true,
+            // 期货 
+            uiIsFutures: false,
+            uiCountry: $scope.countrysOptions[0],
+            uiIdKind: $scope.idKindsOptions[0],
+            uiEmployment: $scope.employmentsOptions[0],
+            uiYear: $scope.years[25],
+            uiMonth: $scope.months[10],
+            uiDay: $scope.days[15],
+            uiNameEnXing: '',
+            uiNameEnMing: '',
+            uiAccept: true,
+            uiNameCnError: '',
+            uiNameCnRight: false,
+            uiNameEnError: '',
+            uiNameEnRight: false,
+            uiMobileError: '',
+            uiMobileRight: false,
+            uiEmailError: '',
+            uiEmailRight: false,
+            uiIdValueError: '',
+            uiIdValueRight: false,
+            uiIssueDepartError: '',
+            uiIssueDepartRight: false,
+            uiAddressError: '',
+            uiAddressRight: false,
+            uiSendAddressError: '',
+            uiSendAddressRight: false
+        };
+    }
 
     $scope.choseSex = function(value) {
         $scope.userData.sex = value;
@@ -111,7 +120,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
                  $scope.checkNameEn() && 
                  $scope.checkMobile() && 
                  $scope.checkEmail() && 
-                 $scope.checkIdValue() && 
+                 $scope.checkIdValue(true) && 
                  $scope.checkIssueDepart() && 
                  $scope.checkAddress() && 
                  $scope.checkSendAddress()) {
@@ -126,6 +135,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
     };
     function submitAccount() {
         var obj = filter();
+        console.log(obj);
         wdOpenAccount.openAccount(obj).then(function(data) {
             console.log(data);
             if (data.code !== 0) {
@@ -217,33 +227,36 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
         $scope.userData.uiIdValueRight = false;
         $scope.userData.uiIdValueError = '';
     };
-    $scope.checkIdValue = function() {
+    $scope.checkIdValue = function(flag) {
         if (!$scope.userData.idValue) {
             $scope.userData.uiIdValueError = '请填写证件号码';
         } else if ($scope.userData.uiIdKind.value === 0 && $scope.userData.idValue.length !== 18) {
             $scope.userData.uiIdValueError = '身份证号码位数不对';
         } else {
             $scope.userData.uiIdValueRight = true;
-            if ($scope.userData.uiIdKind.value === 0) {
+            if (!flag && $scope.userData.uiIdKind.value === 0) {
                 var str = $scope.userData.idValue;
                 var year = str.substr(6, 4);
                 var month = str.substr(10, 2);
                 var day = str.substr(12, 2);
-                $scope.userData.uiYear = _.find($scope.years, function(v) {
+                var uiYear = _.find($scope.years, function(v) {
                     if (v.key === year) {
                         return true;
                     }
                 });
-                $scope.userData.uiMonth = _.find($scope.months, function(v) {
+                $scope.userData.uiYear = uiYear || $scope.userData.uiYear;
+                var uiMonth = _.find($scope.months, function(v) {
                     if (v.key === month) {
                         return true;
                     }
                 });
-                $scope.userData.uiDay = _.find($scope.days, function(v) {
+                $scope.userData.uiMonth = uiMonth || $scope.userData.uiMonth;
+                var uiDay = _.find($scope.days, function(v) {
                     if (v.key === day) {
                         return true;
                     }
                 });
+                $scope.userData.uiDay = uiDay || $scope.userData.uiDay;
                 $scope.userData.sex = str.substr(14, 3) % 2 === 1 ? 0 : 1;
             }
             return true;
@@ -293,6 +306,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
     $scope.resetStep = function() {
         $window.localStorage.removeItem('progress');
         $scope.step = 1;
+        reset();
     };
     $scope.$on('beforeunload', function() {
         if ($scope.step < 3) {
