@@ -24,6 +24,12 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
     var absUrl = $location.absUrl();
     if (/broker_id/.test(absUrl)) {
         brokerId = absUrl.match('broker_id=(.*)#')[1];
+        window.localStorage.setItem('brokerId', brokerId);
+    }
+    var sourceCode = '';
+    if (/source_code/.test(absUrl)) {
+        sourceCode = absUrl.match('source_code=(.*)#')[1];
+        window.localStorage.setItem('sourceCode', sourceCode);
     }
     function reset() {
         $scope.userData = {
@@ -48,7 +54,8 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
             address: '',
             // 通讯地址
             sendAddress: '',
-            brokerId: brokerId,
+            brokerId: '',
+            sourceCode: '',
             // ui 相关
             // 证券
             uiIsSecurity: true,
@@ -105,6 +112,8 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
         } else if (!$scope.userData.uiIsSecurity && $scope.userData.uiIsFutures) {
             $scope.userData.accountType = 1;
         }
+        $scope.userData.brokerId = brokerId;
+        $scope.userData.sourceCode = sourceCode;
         return wdDataSetting.filterUi($scope.userData);
     }
 
@@ -139,8 +148,8 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
         wdOpenAccount.openAccount(obj).then(function(data) {
             console.log(data);
             if (data.code !== 0) {
+                $scope.step = 1;
                 $window.alert('开户失败，请重试！');
-                $scope.step = 2;
             } else {
                 $window.localStorage.setItem('progress', 3);
             }
