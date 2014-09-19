@@ -42,7 +42,7 @@
                     <p>证券账户</p>
                     <i class="icon-info tip" wd-tooltip
                     data-placement="bottom" 
-                    title="环球证券保证金账户可投资港股、美股等股票。"></i>
+                    title="环球证券保证金账户可投资港股。"></i>
                     <input type="checkbox" ng-model="userData.uiIsFutures">
                     <p>期货账户</p>
                     <i class="icon-info tip" wd-tooltip
@@ -162,6 +162,10 @@
                         <p>{{userData.uiSendAddressError}}</p>
                     </span>
                 </li>
+                <li class="item">
+                    <p class="item-title">邀请码（可不填）</p>
+                    <input type="text" class="form-control item-input" ng-model="userData.brokerId">
+                </li>
             </ul>
             <div class="protocol">
                 <input type="checkbox" ng-model="userData.uiAccept">
@@ -179,9 +183,13 @@
         <!-- witness -->
         <div class="witness-form" 
             ng-class="{'hide': (step !== 3),'show-slow': (step === 3)}">
-            <p>恭喜您的《开户申请》提交成功，我们的客户经理会主动与您取得联系！</p>
+            <p>恭喜您的《开户申请》提交成功，客服代表会在服务时间内与您确认开户事宜！</p>
+            <br>
+            <p>服务时间：周一至周五 9:00 - 17:30</p>
             <br>
             <p>或者选择立即联系 QQ 客服：</p>
+            <br>
+
             <div class="photo">
                 <i class="icon-witness-photo"></i>
                 <br>

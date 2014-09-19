@@ -19,12 +19,13 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
     $scope.days = wdDataSetting.days;
     // 首页的 tab
     $scope.tab = 1;
-    reset();
-    var brokerId = '';
+    var brokerId = window.localStorage.getItem('brokerId') || '';
     var absUrl = $location.absUrl();
     if (/broker_id/.test(absUrl)) {
-        brokerId = absUrl.match('broker_id=(.*)#')[1];
-        window.localStorage.setItem('brokerId', brokerId);
+        var result = absUrl.match('broker_id=(.*)#');
+        if (result.length >= 2) {
+            brokerId = result[1];
+        }
     }
     var sourceCode = '';
     if (/source_code/.test(absUrl)) {
@@ -54,7 +55,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
             address: '',
             // 通讯地址
             sendAddress: '',
-            brokerId: '',
+            brokerId: brokerId,
             sourceCode: '',
             // ui 相关
             // 证券
@@ -65,7 +66,7 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
             uiIdKind: $scope.idKindsOptions[0],
             uiEmployment: $scope.employmentsOptions[0],
             uiYear: $scope.years[25],
-            uiMonth: $scope.months[10],
+            uiMonth: $scope.months[12],
             uiDay: $scope.days[15],
             uiNameEnXing: '',
             uiNameEnMing: '',
@@ -88,6 +89,8 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
             uiSendAddressRight: false
         };
     }
+
+    reset();
 
     $scope.choseSex = function(value) {
         $scope.userData.sex = value;
@@ -112,7 +115,8 @@ function openCtrl($scope, wdOpenAccount, wdDataSetting, wdCheck, $timeout, $wind
         } else if (!$scope.userData.uiIsSecurity && $scope.userData.uiIsFutures) {
             $scope.userData.accountType = 1;
         }
-        $scope.userData.brokerId = brokerId;
+        // $scope.userData.brokerId = brokerId;
+        window.localStorage.setItem('brokerId', brokerId);
         $scope.userData.sourceCode = sourceCode;
         return wdDataSetting.filterUi($scope.userData);
     }
